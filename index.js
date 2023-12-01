@@ -65,6 +65,7 @@ if (navigator.mediaDevices.getUserMedia) {
         });
     })
     .catch(function (error) {
+      console.error(error);
       console.log("Something went wrong!");
     });
 }
