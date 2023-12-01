@@ -47,22 +47,22 @@ if (navigator.mediaDevices.getUserMedia) {
             });
           }, 250);
         });
-      roboflow
-        .auth({
-          publishable_key: "rf_5w20VzQObTXjJhTjq6kad9ubrm33",
-        })
-        .load({
-          model: "ppe-detection-exbpw",
-          version: 3,
-        })
-        .then(function (model) {
-          setInterval(() => {
-            model.detect(video).then(function (predictions) {
-              const ctx = canvas.getContext("2d");
-              drawRect(predictions, ctx);
-            });
-          }, 250);
-        });
+      //   roboflow
+      //     .auth({
+      //       publishable_key: "rf_5w20VzQObTXjJhTjq6kad9ubrm33",
+      //     })
+      //     .load({
+      //       model: "ppe-detection-exbpw",
+      //       version: 3,
+      //     })
+      //     .then(function (model) {
+      //       setInterval(() => {
+      //         model.detect(video).then(function (predictions) {
+      //           const ctx = canvas.getContext("2d");
+      //           drawRect(predictions, ctx);
+      //         });
+      //       }, 250);
+      //     });
     })
     .catch(function (error) {
       console.error(error);
