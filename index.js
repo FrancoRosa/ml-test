@@ -1,5 +1,6 @@
 var video = document.querySelector("#video");
-var canvas = document.querySelector("#canvas");
+var canvas1 = document.querySelector("#canvas1");
+var canvas2 = document.querySelector("#canvas2");
 
 const drawRect = (detections, ctx) => {
   // Loop through each prediction
@@ -42,27 +43,27 @@ if (navigator.mediaDevices.getUserMedia) {
         .then(function (model) {
           setInterval(() => {
             model.detect(video).then(function (predictions) {
-              const ctx = canvas.getContext("2d");
+              const ctx = canvas1.getContext("2d");
               drawRect(predictions, ctx);
             });
           }, 250);
         });
-      //   roboflow
-      //     .auth({
-      //       publishable_key: "rf_5w20VzQObTXjJhTjq6kad9ubrm33",
-      //     })
-      //     .load({
-      //       model: "ppe-detection-exbpw",
-      //       version: 3,
-      //     })
-      //     .then(function (model) {
-      //       setInterval(() => {
-      //         model.detect(video).then(function (predictions) {
-      //           const ctx = canvas.getContext("2d");
-      //           drawRect(predictions, ctx);
-      //         });
-      //       }, 250);
-      //     });
+      roboflow
+        .auth({
+          publishable_key: "rf_5w20VzQObTXjJhTjq6kad9ubrm33",
+        })
+        .load({
+          model: "ppe-detection-exbpw",
+          version: 3,
+        })
+        .then(function (model) {
+          setInterval(() => {
+            model.detect(video).then(function (predictions) {
+              const ctx = canvas2.getContext("2d");
+              drawRect(predictions, ctx);
+            });
+          }, 250);
+        });
     })
     .catch(function (error) {
       console.error(error);
